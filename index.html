@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- pull in styles -->
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Meme Generator</title>
+</head>
+<body>
+    <!-- 
+        **Requirements**
+
+        - The HTML page shows a form with three input options - Top Text, Bottom Text, Image - and a submit button
+        - Users should be able to submit a form on the page to generate a new meme on the page
+        - They should be able to add **multiple memes** to the page by submitting the form multiple times
+        - Users should be able to click on a button to delete/remove a meme from the page
+        - The form boxes should clear out automatically after the submit is clicked
+        - The form fields need to have validation so they will not submit if a field is missing
+        - Be sure to style your meme generator! It should be functional but also look nice
+        - **Only use vanilla JavaScript: no frameworks/third-party libraries are allowed**
+    -->
+
+    <h1>Meme Generator</h1>
+
+    <!-- Form for meme input -->
+    <h2>Create Your Meme</h2>
+    <form id="meme-form">
+        <!-- add a hint for the image URL input -->
+        <div class="form-row">
+            <label for="imageUrl">Image URL:</label>
+            <input type="text" id="imageUrl" placeholder="link to image" name="imageUrl" required><br><br>
+        </div>
+
+        <div class="form-row">
+            <label for="topText">Top Text:</label>
+            <input type="text" id="topText" placeholder="Top text" name="topText" required><br><br>
+        </div>
+
+        <div class="form-row">
+            <label for="bottomText">Bottom Text:</label>
+            <input type="text" id="bottomText" placeholder="Bottom text" name="bottomText" required><br><br>
+        </div>
+
+        <button type="submit">Generate Meme</button>
+    </form>
+    <br>
+    <!-- Meme will be displayed here -->
+    <h2>Result(s)</h2>
+    <!-- I have a feeling HTML Canvas is more appropriate -->
+     <!-- But will have to look it up later -->
+    <!-- <canvas></canvas> -->
+
+    <div id="meme-container"></div>
+
+    <!-- load JavaScript file after HTML content -->
+    <!-- defer attribute ensures the script is executed after the document has been parsed -->
+    <!-- https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup -->
+    <script defer src="assets/app.js"></script>
+</body>
+</html>

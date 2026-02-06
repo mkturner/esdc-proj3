@@ -1,0 +1,240 @@
+/* Abstract reused values to custom properties */
+/* :root pseudo-class allows global CSS variables */
+/* https://devdocs.io/css/:root */
+:root {
+    --primary-color: royalblue;
+    --secondary-color: lightblue;
+    --accent-color: darkblue;
+    --text-color: white;
+    --visited-link-color: blueviolet;
+    --delete-button-color: #B71C1C;
+}
+
+a:visited {
+    color: var(--visited-link-color);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+    margin: 0;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.form-row label {
+    width: 120px;
+    text-align: left;
+}
+
+.form-row input[type="text"] {
+    flex: 1;
+    min-width: 0;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+    border-color: var(--accent-color);
+    /* give a subtle glow effect, as a visual cue */
+    box-shadow: 0 0 5px var(--accent-color);
+    /* remove default outline on focus */
+    outline: none;
+}
+
+::placeholder {
+    color: var(--primary-color);
+    opacity: 0.6;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+}   
+
+button, input[type="text"] {
+    font-size: 16px;
+    width: 80%;
+}
+
+.bordered {
+    border: 2px solid var(--primary-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* css for meme container, mostly setting up flexbox */
+.meme-container {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* css for individual memes */
+.meme {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    max-width: 100%;
+    width: 22rem;
+
+}
+
+.meme-content {
+    position: relative;
+    display: inline-block;
+    /* ensure meme content stays as wide as possible */
+    max-width: 100%;
+    width: 100%;
+    /* Aspect ratio keeps meme content uniform */
+    /* https://stackoverflow.com/a/77570732 */
+    aspect-ratio: 1 / 1;
+}
+.top-text, .bottom-text {
+    color: #FFF;
+    /* Following lines add a stroke effect to the text */
+    /* https://www.reddit.com/r/neocities/comments/1f7n24j/comment/ll9iuwo/ */
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-stroke */
+	text-transform: uppercase;
+	-webkit-text-stroke: 0.2em black;
+    /* forces the black stroke underneath the white text */
+    /* black will be drawn first, followed by white on top */
+    paint-order: stroke fill;
+
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    width: 90%;
+    padding: 0 0.5rem;
+}
+
+.top-text {
+    top: 5%;
+    position: absolute;
+}
+
+.bottom-text {
+    bottom: 5%;
+    position: absolute;
+}
+
+.meme img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* center img in container */
+    margin: 0 auto;
+}
+
+.delete-button {
+    background-color: var(--delete-button-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+
+/* media queries */
+@media only screen and (min-width: 1000px) {
+    body {
+        margin: 4rem;
+        padding: 8rem;
+        font-size: 1rem;
+        border: 0.5rem solid var(--primary-color);
+    }
+}
+
+/* Alter spacing& formatting on small devices */
+@media only screen and (max-width: 999px) {
+    body {
+        margin: 0.5rem;
+        padding: 1rem;
+        font-size: 1rem;
+        border: 0.5rem solid var(--secondary-color);
+    }
+
+    button, input[type="text"] {
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+}
+
+/* Change theme colors on different size devices */
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+        :root {
+        --primary-color: mediumseagreen;
+        --secondary-color: lightgreen;
+        --accent-color: darkgreen;
+        }
+        .meme {
+            width: 80%;
+            justify-self: center;
+        }
+} 
+
+@media only screen and (max-width: 479px) {
+    :root {
+        --primary-color: #e64a19;
+        --secondary-color: salmon;
+        --accent-color: darkred;
+        }
+    
+        .meme {
+            width: 85%;
+            justify-self: center;
+        }
+    /* --primary-color isn't easy to read in orange theme */
+    /* manual override for readability */
+    form button:hover {
+    color: var(--accent-color);
+    }
+}
