@@ -17,9 +17,9 @@ const memeForm = document.getElementById('meme-form');
 const memeContainer = document.getElementById('meme-container');
 
 // Handle form submission with event listener
-// https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 // 1st parameter: event type to listen for
 // 2nd parameter: callback function to execute when the event occurs
+// https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 // Make sure the DOM is fully loaded before attaching event listeners
 // ES2020 optional chaining operator (?.) to ensure memeForm exists before adding event listener
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
